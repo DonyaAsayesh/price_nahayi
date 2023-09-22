@@ -72,7 +72,8 @@ class MyApp extends StatelessWidget {
               width: double.infinity,
               height: 30,
               decoration: BoxDecoration(
-                  color: const Color.fromRGBO(158, 158, 158, 1), borderRadius: BorderRadius.circular(50)),
+                  color: const Color.fromRGBO(158, 158, 158, 1),
+                  borderRadius: BorderRadius.circular(50)),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -100,45 +101,48 @@ class MyApp extends StatelessWidget {
                   color: const Color.fromARGB(255, 252, 243, 217),
                   borderRadius: BorderRadius.circular(20)),
               child: ListView.separated(
-                physics: BouncingScrollPhysics(),
-                itemCount: 30,
-                itemBuilder: (BuildContext context, int positions) {
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                    child: Container(
-                      width: double.infinity,
-                      height: 35,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text("دلار آمریکا"),
-                            Text("28000"),
-                            Text("-3")
-                          ]),
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                    child: Container(
-                      width: double.infinity,
-                      height: 35,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 255, 190, 99),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [Text(" تبلیغات")]),
-                    ),
-                  );
-                },
-              ),
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 30,
+                  itemBuilder: (BuildContext context, int positions) {
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                      child: Container(
+                        width: double.infinity,
+                        height: 35,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text("دلار آمریکا"),
+                              Text("28000"),
+                              Text("-3")
+                            ]),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    if (index % 9 == 0) {
+                      return Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                        child: Container(
+                          width: double.infinity,
+                          height: 35,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 255, 190, 99),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [Text(" تبلیغات")]),
+                        ),
+                      );
+                    } else {
+                      return SizedBox.shrink();
+                    }
+                  }),
             ),
-          )
+          ),
         ]),
       ),
     );
