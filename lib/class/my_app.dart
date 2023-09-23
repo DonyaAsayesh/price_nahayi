@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               width: double.infinity,
-              height: 400,
+              height: MediaQuery.of(context).size.height / 2,
               decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 252, 243, 217),
                   borderRadius: BorderRadius.circular(20)),
@@ -143,8 +143,60 @@ class MyApp extends StatelessWidget {
                   }),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 252, 227, 151),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: 50,
+                      child: TextButton.icon(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                const Color.fromARGB(255, 240, 239, 233)),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)))),
+                        onPressed: () =>_snackbar(context, "چوخ شرمنده"),
+                        icon: Icon(
+                          CupertinoIcons.refresh_circled,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        label: Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                          child: Text(
+                            "بروزرسانی",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Text(
+                        "آخرین بروز رسانی 18:54",
+                      ),
+                    )
+                  ]),
+            ),
+          )
         ]),
       ),
     );
   }
+}
+
+void _snackbar(BuildContext context, String msg) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(msg,style: TextStyle(fontFamily: 'Iransans'),),backgroundColor: Colors.green,
+    ),
+  );
 }
